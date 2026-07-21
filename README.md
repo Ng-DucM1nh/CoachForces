@@ -1,2 +1,2 @@
 # CoachForce
-your personal, reliable (and funny) codeforce coach
+your personal, reliable (and funny) codeforces coach
