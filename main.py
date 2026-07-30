@@ -18,6 +18,7 @@ data = response.json()
 solved_problem = set(())
 tag_stat = {}
 
+# grab all solved problems
 for submission in data["result"]:
   if submission["verdict"] != "OK":
     continue
@@ -43,16 +44,21 @@ for submission in data["result"]:
 # print(solved_problem)
 print(f"# solved problems: {len(solved_problem)}")
 
-tag_power = {}
+tag_strength_value = {}
 
 for tag in tag_stat.keys():
+  # skip irregular tags
+  if tag[0] == '*':
+    continue
+
+  # calculate strength value of user for each tag
   power = 0
   count = 0
   for rating in tag_stat[tag].keys():
     thisCount = tag_stat[tag][rating]
     power += rating * thisCount
     count += thisCount
-  tag_power[tag] = power / count
+  tag_strength_value[tag] = power / count
 
 
-print(tag_power)
+print(tag_strength_value)
